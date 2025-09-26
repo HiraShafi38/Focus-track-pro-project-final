@@ -1,3 +1,5 @@
+
+```markdown
 # TaskMaster
 
 TaskMaster is a full-stack task manager with email/password authentication, JWT-based sessions, and a clean, responsive UI. Create, list, complete, and delete tasks with categories — all backed by MongoDB Atlas.
@@ -44,10 +46,12 @@ TaskMaster is a full-stack task manager with email/password authentication, JWT-
 * Backend → Render / Railway / Fly.io / any Node host
 
 ---
+```
 
 ## 📁 Project Structure
 
 ```
+
 TaskMaster/
 ├─ src/                     # Frontend (Vite React)
 │  ├─ components/           # UI components (auth, tasks, layout)
@@ -73,6 +77,7 @@ TaskMaster/
 ├─ README.md
 ├─ package.json             # Frontend package.json
 └─ vite.config.ts
+
 ```
 
 > **Important:** All backend imports use **relative** paths (e.g., `./config/db`) so the code is portable on any machine.
@@ -85,7 +90,7 @@ TaskMaster/
 
 ```ini
 VITE_API_URL=http://localhost:5000
-```
+````
 
 ### Backend (`/server/.env`)
 
@@ -103,6 +108,64 @@ JWT_EXPIRES_IN=7d
 
 ---
 
+## 📦 Install Dependencies (download `node_modules`)
+
+> Requires Node.js ≥ 18 and npm (bundled with Node).
+> Run these from the project root unless noted.
+
+### 1) Frontend (root)
+
+If `package-lock.json` exists (recommended for clean, reproducible installs):
+
+```bash
+npm ci
+```
+
+Otherwise:
+
+```bash
+npm install
+```
+
+### 2) Backend (`/server`)
+
+```bash
+cd server
+# Prefer ci if server/package-lock.json exists
+npm ci || npm install
+```
+
+### 3) Verify installs & start dev servers
+
+**Backend (Terminal A):**
+
+```bash
+cd server
+npm run dev      # http://localhost:5000
+```
+
+**Frontend (Terminal B, from project root):**
+
+```bash
+npm run dev      # http://localhost:5173 (or your Vite port)
+```
+
+### 4) Common issues
+
+* **“npm: command not found”** → Install Node.js LTS from nodejs.org, then reopen terminal.
+* **Lockfile mismatch / errors** → Try a clean install:
+
+  ```bash
+  npm cache clean --force
+  rm -rf node_modules package-lock.json
+  npm install
+  ```
+
+  (Do the same inside `server/` if needed.)
+* **Windows build tools (node-gyp) errors** → Install “Desktop development with C++” (VS Build Tools) and retry.
+
+---
+
 ## 🧑‍💻 Local Development
 
 ### 1) Backend
@@ -110,7 +173,6 @@ JWT_EXPIRES_IN=7d
 ```bash
 cd server
 cp .env.example .env      # fill in values
-npm install
 npm run dev               # starts Express on http://localhost:5000
 ```
 
@@ -140,7 +202,6 @@ cp .env.example .env.development
 # Ensure it contains:
 # VITE_API_URL=http://localhost:5000
 
-npm install
 npm run dev              # starts Vite on http://localhost:8080
 ```
 
@@ -290,3 +351,6 @@ MIT © 2025 TaskMaster Contributors
 ## 🙌 Acknowledgements
 
 Thanks to the React, Vite, Express, and MongoDB communities for the excellent tooling.
+
+```
+
